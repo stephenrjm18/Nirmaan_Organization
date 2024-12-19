@@ -3,57 +3,86 @@ package assessment2;
 import java.util.Scanner;
 
 public class MainBank {
-	public static void main(String args[]) {
-		Scanner scan=new Scanner(System.in);
-		AccountDetails a1=new AccountDetails();
-		int Cpin =a1.getPin();
-		System.out.print("Enter the pin no:");
-		int Epin=scan.nextInt();
-		if(Cpin==Epin) {
-			  System.out.println("Enter the Account number: ");
-			  int accnum=scan.nextInt();
-			  scan.nextLine();
-			  a1.setAccNum(accnum);
-			  System.out.println("enter the holder name:");
-			  String name=scan.nextLine();
-			  a1.setHolderName(name);
-			while(true) {
-				  System.out.println("press 1 to Deposit");
-				  System.out.println("press 2 to Withdraw");
-				  System.out.println("press 3 to check Balance");
-				  System.out.println("press 4 to Display Details");
-				  System.out.println("Enter your choice: ");
-				  int key=scan.nextInt();
-				  if(key==1) {
-					  System.out.print("enter the Amount: ");
-					  double balance=scan.nextDouble();
-					  a1.setBalance(balance);
-					  
-				  }
-				  else if(key ==2) {
-					  System.out.println("enter the amount:");
-					  double balance=scan.nextDouble();
-					  a1.setBalance(balance);
-				  }
-				  else if(key==3) {
-					 System.out.println( a1.getBalance());
-					 
-				  }
-				  else if(key==4) {
-					  System.out.println(a1);
-				  }
-				  
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		AccountDetails bank = new AccountDetails(1234567, 10000, "abi");
+		System.out.println("Enter your pin number: ");
+		long UserPin = sc.nextLong();
+		sc.nextLine();
+		long Pin = bank.getPin();
+		int choice;
+		boolean isTrue = true;
+		while (isTrue) {
+			if (Pin == UserPin) {
+
+				System.out.println("choose an option:");
+				System.out.println("1: To set the account details ");
+				System.out.println("2: To deposit amount");
+				System.out.println("3: To withdraw amount");
+				System.out.println("4: To display account details");
+				System.out.println("0 for exit");
+				System.out.println(" ");
+				System.out.println("Enter an option");
+				choice = sc.nextInt();
+				sc.nextLine();
+				if (choice == 1) {
+
+					System.out.println("Enter Account Number: ");
+					long accountNo = sc.nextLong();
+					sc.nextLine();
+
+					System.out.println("Enter Account Holder Name: ");
+					String name = sc.nextLine();
+
+					System.out.println("Enter Account Balance: ");
+					double balance = sc.nextDouble();
+					sc.nextLine();
+
+					bank = new AccountDetails(accountNo, balance, name);
+				}
+
+				if (choice == 2) {
+
+					System.out.println("Enter amount to be added");
+					long amount = sc.nextLong();
+					sc.nextLine();
+					bank.setBalance(bank.getBalance() + amount);
+				}
+				 if (choice == 3) {
+					System.out.println("Enter your pin number: ");
+					//UserPin = sc.nextLong();
+					long UserPin2 = sc.nextLong();
+					Pin = bank.getPin();
+					
+					
+					if (Pin == UserPin2) {
+						System.out.println("Enter amount to be detucted");
+						long dAmount = sc.nextLong();
+						sc.nextLine();
+						bank.setBalance(bank.getBalance() - dAmount);
+					}
+					else {
+						System.out.println("Enter correct pin number");
+					}
+					
+				}
+
+				 if (choice == 4) {
+					System.out.println(bank.toString());
+				}
+				 if(choice == 0) {
+					isTrue = false;
+					System.out.println("thank you");
+				}
+
+//				else {
+//			System.out.println("Enter correct choice");
+//				}
+		}
+				 else {
+				System.out.println("Enter correct pin number");
+				break;}
 			}
-			  
-			
-			
-			
-			
-		}
-		else {
-			System.out.println("Wrong pin");
-		}
-		
 	}
 
 }

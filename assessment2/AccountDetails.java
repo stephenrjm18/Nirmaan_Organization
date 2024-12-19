@@ -1,28 +1,16 @@
 package assessment2;
 
 public class AccountDetails {
-	private int accNum;
-	private String holderName;
+	private long accountNo;
 	private double balance;
-	private final int pin=3425;
-	public int getPin() {
-		return pin;
+	private String name;
+	private final long pin = 3425;
+	
+	public long getAccountNo() {
+		return accountNo;
 	}
-	@Override
-	public String toString() {
-		return "AccountDetails [accNum=" + accNum + ", holderName=" + holderName + ", balance=" + balance + "]";
-	}
-	public int getAccNum() {
-		return accNum;
-	}
-	public void setAccNum(int accNum) {
-		this.accNum = accNum;
-	}
-	public String getHolderName() {
-		return holderName;
-	}
-	public void setHolderName(String holderName) {
-		this.holderName = holderName;
+	public void setAccountNo(long accountNo) {
+		this.accountNo = accountNo;
 	}
 	public double getBalance() {
 		return balance;
@@ -30,7 +18,29 @@ public class AccountDetails {
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
-	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public long getPin() {
+		return pin;
+	}
+	@Override
+	public String toString() {
+		return "AccountDetails [accountNo=" + accountNo + ", balance=" + balance + ", name=" + name + "]";
+	}
+	public AccountDetails(long accountNo, double balance, String name) {
+		super();
+		this.accountNo = accountNo;
+		this.balance = balance;
+		this.name = name;
+	}
+	public AccountDetails() {
+		
+	}
+
 	
 
 }
