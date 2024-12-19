@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class MainBank {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		AccountDetails bank = new AccountDetails(1234567, 10000, "abi");
+		AccountDetails bank = new AccountDetails(1234567, 10000, "Stephen");
 		System.out.println("Enter your pin number: ");
 		long UserPin = sc.nextLong();
 		sc.nextLine();
